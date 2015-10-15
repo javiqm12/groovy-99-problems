@@ -9,28 +9,10 @@ package lists
 //      pack([1, 1, 1, 1, 2, 3, 3, 1, 1, 4, 5, 5, 5, 5])
 //      [[4, 1], [1, 2], [2, 3], [2, 1], [1, 4], [4, 5]]
 
-//evaluate(new File('src/lists/p09.groovy'))
-
-List pack(List ls) {
-    List result = []
-    for (int i = 0; i < ls.size(); i++) {
-        List subresult = [ls[i]]
-        boolean duplicateFound = false
-        int j = i + 1
-        for (; j < ls.size() && ls[i] == ls[j]; j++) {
-            duplicateFound = true
-            subresult << ls[j]
-        }
-        if (duplicateFound) {
-            i = j - 1
-        }
-        result << subresult
-    }
-    result
-}
+import lists.p09
 
 List encode(List ls) {
-    def subres = pack(ls)
+    def subres = p09.packRecursive(ls)
     List result = []
     for (sls in subres) {
         result << [sls.size(), sls[0]]
@@ -38,6 +20,11 @@ List encode(List ls) {
     result
 }
 
+List encodeFunctional(List ls) {
+    p09.packRecursive(ls).collect { [it.size(), it[0]] }
+}
+
+//println p09.packRecursive([1,1,1])
 //println "encode([1, 2, 2]) = " + encode([1, 2, 2])
 //println "encode([]) = " + encode([])
 //println "pack([1, 1, 2]) = " + pack([1, 1, 2])
@@ -48,3 +35,9 @@ assert encode([1, 1, 2]) == [[2, 1], [1, 2]]
 assert encode([1, 1, 2, 3, 3]) == [[2, 1], [1, 2], [2, 3]]
 assert encode([]) == []
 assert encode([1, 1, 1, 1, 2, 3, 3, 1, 1, 4, 5, 5, 5, 5]) == [[4, 1], [1, 2], [2, 3], [2, 1], [1, 4], [4, 5]]
+
+assert encodeFunctional([1, 2, 2]) == [[1, 1], [2, 2]]
+assert encodeFunctional([1, 1, 2]) == [[2, 1], [1, 2]]
+assert encodeFunctional([1, 1, 2, 3, 3]) == [[2, 1], [1, 2], [2, 3]]
+assert encodeFunctional([]) == []
+assert encodeFunctional([1, 1, 1, 1, 2, 3, 3, 1, 1, 4, 5, 5, 5, 5]) == [[4, 1], [1, 2], [2, 3], [2, 1], [1, 4], [4, 5]]
