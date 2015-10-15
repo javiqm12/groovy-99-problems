@@ -7,7 +7,7 @@ package lists
 //      pack([1, 1, 1, 1, 2, 3, 3, 1, 1, 4, 5, 5, 5, 5])
 //      [[1, 1, 1, 1], [2], [3, 3], [1, 1], [4], [5, 5, 5, 5]]
 
-List pack(List ls) {
+static List pack(List ls) {
     List result = []
     for (int i = 0; i < ls.size(); i++) {
         List subresult = [ls[i]]
@@ -25,7 +25,7 @@ List pack(List ls) {
     result
 }
 
-List packRecursive(List ls) {
+static List packRecursive(List ls) {
     if (!ls) return ls
     List lsh = ls.takeWhile { it == ls.head() }
     [lsh] + packRecursive(ls.dropWhile { it == ls.head() })
