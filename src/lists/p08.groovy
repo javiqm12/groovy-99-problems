@@ -19,11 +19,17 @@ List compressIterative(List ls) {
     result
 }
 
-//import groovy.transform.TailRecursive
-//@TailRecursive
 List compress(List ls) {
     if (!ls) return ls
     [ls.head()] + compress(ls.tail().dropWhile {it == ls.head()})
+}
+
+import groovy.transform.TailRecursive
+@TailRecursive
+List compressTailRecursive(List ls, result = []) {
+    if (!ls) return result
+    compressTailRecursive(ls.tail().dropWhile {it == ls.head()},
+        result << ls.head())
 }
 
 List compressFunctional(List ls) {
@@ -43,4 +49,5 @@ assert compress([5]) == [5]
 assert compress([3,3]) == [3]
 assert compress(['a','a']) == ['a']
 
+assert compressTailRecursive(ls) == [1, 2, 3, 1, 4, 5]
 assert compressFunctional(ls) == [1, 2, 3, 1, 4, 5]
