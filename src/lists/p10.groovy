@@ -20,7 +20,7 @@ List encode(List ls) {
     result
 }
 
-List encodeFunctional(List ls) {
+static List encodeFunctional(List ls) {
     p09.packRecursive(ls).collect { [it.size(), it[0]] }
 }
 
