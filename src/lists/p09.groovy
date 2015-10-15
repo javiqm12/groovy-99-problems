@@ -25,6 +25,14 @@ List pack(List ls) {
     result
 }
 
+List packRecursive(List ls) {
+    if (!ls) return ls
+    List lsh = ls.takeWhile { it == ls.head() }
+    [lsh] + packRecursive(ls.dropWhile { it == ls.head() })
+}
+
+List ls = [1, 1, 1, 1, 2, 3, 3, 1, 1, 4, 5, 5, 5, 5]
+
 //println "pack([1, 2, 2]) = " + pack([1, 2, 2])
 //println "pack([1, 1, 2]) = " + pack([1, 1, 2])
 //println "pack([1, 1, 2, 3, 3]) = " + pack([1, 1, 2, 3, 3])
@@ -33,4 +41,11 @@ assert pack([1, 2, 2]) == [[1], [2, 2]]
 assert pack([1, 1, 2]) == [[1, 1], [2]]
 assert pack([1, 1, 2, 3, 3]) == [[1, 1], [2], [3, 3]]
 assert pack([]) == []
-assert pack([1, 1, 1, 1, 2, 3, 3, 1, 1, 4, 5, 5, 5, 5]) == [[1, 1, 1, 1], [2], [3, 3], [1, 1], [4], [5, 5, 5, 5]]
+assert pack(ls) == [[1, 1, 1, 1], [2], [3, 3], [1, 1], [4], [5, 5, 5, 5]]
+
+//println "packRecursive(ls) = ${packRecursive(ls)}"
+assert packRecursive(ls) == [[1, 1, 1, 1], [2], [3, 3], [1, 1], [4], [5, 5, 5, 5]]
+assert packRecursive([1, 2, 2]) == [[1], [2, 2]]
+assert packRecursive([1, 1, 2]) == [[1, 1], [2]]
+assert packRecursive([1, 1, 2, 3, 3]) == [[1, 1], [2], [3, 3]]
+assert packRecursive([]) == []
