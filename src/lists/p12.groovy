@@ -15,8 +15,14 @@ List decode(List ls) {
     result.flatten()
 }
 
+List decodeFunctional(List ls) {
+    ls.collect { [it[1]] * it[0] }.flatten()
+}
+
 assert decode([[1, 1], [2, 2]]) == [1, 2, 2]
 assert decode([[2, 1], [1, 2]]) == [1, 1, 2]
 assert decode([[2, 1], [1, 2], [2, 3]]) == [1, 1, 2, 3, 3]
 assert decode([]) == []
 assert decode([[4, 1], [1, 2], [2, 3], [2, 1], [1, 4], [4, 5]]) == [1, 1, 1, 1, 2, 3, 3, 1, 1, 4, 5, 5, 5, 5]
+
+assert decodeFunctional([[1, 1], [2, 2]]) == [1, 2, 2]
