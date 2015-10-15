@@ -9,6 +9,7 @@ package lists
 //      [[4, 1], 2, [2, 3], [2, 1], 4, [4, 5]]
 
 import lists.p09
+import lists.p10
 
 List encode(List ls) {
     def subres = p09.packRecursive(ls)
@@ -22,6 +23,10 @@ List encode(List ls) {
     result
 }
 
+List encodeFunctional(List ls) {
+    p10.encodeFunctional(ls).collect { if (it[0] == 1) it[1] else it }
+}
+
 //println "encode([1, 2, 2]) = " + encode([1, 2, 2])
 //println "encode([]) = " + encode([])
 //println "pack([1, 1, 2]) = " + pack([1, 1, 2])
@@ -32,3 +37,9 @@ assert encode([1, 1, 2]) == [[2, 1], 2]
 assert encode([1, 1, 2, 3, 3]) == [[2, 1], 2, [2, 3]]
 assert encode([]) == []
 assert encode([1, 1, 1, 1, 2, 3, 3, 1, 1, 4, 5, 5, 5, 5]) == [[4, 1], 2, [2, 3], [2, 1], 4, [4, 5]]
+
+assert encodeFunctional([1, 2, 2]) == [1, [2, 2]]
+assert encodeFunctional([1, 1, 2]) == [[2, 1], 2]
+assert encodeFunctional([1, 1, 2, 3, 3]) == [[2, 1], 2, [2, 3]]
+assert encodeFunctional([]) == []
+assert encodeFunctional([1, 1, 1, 1, 2, 3, 3, 1, 1, 4, 5, 5, 5, 5]) == [[4, 1], 2, [2, 3], [2, 1], 4, [4, 5]]
