@@ -20,8 +20,19 @@ List drop2(Integer n, List ls) {
     result[1]
 }
 
+List drop3(Integer n, List ls) {
+    def zipd = [ls, 1..ls.size()].transpose()
+    zipd.grep { it[1] % n != 0 }.collect { it[0] }
+}
+
 assert drop(2, [1, 2, 3, 4, 5]) == [1, 3, 5]
 assert drop(2, ['a', 'b']) == ['a']
 assert drop(2, []) == []
 
 assert drop2(2, [1, 2, 3, 4, 5]) == [1, 3, 5]
+assert drop2(2, ['a', 'b']) == ['a']
+assert drop2(2, []) == []
+
+assert drop3(2, [1, 2, 3, 4, 5]) == [1, 3, 5]
+assert drop3(2, ['a', 'b']) == ['a']
+assert drop3(2, []) == []
