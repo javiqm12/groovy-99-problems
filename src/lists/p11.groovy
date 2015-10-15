@@ -8,28 +8,10 @@ package lists
 //      pack([1, 1, 1, 1, 2, 3, 3, 1, 1, 4, 5, 5, 5, 5])
 //      [[4, 1], 2, [2, 3], [2, 1], 4, [4, 5]]
 
-//evaluate(new File('src/lists/p09.groovy'))
-
-List pack(List ls) {
-    List result = []
-    for (int i = 0; i < ls.size(); i++) {
-        List subresult = [ls[i]]
-        boolean duplicateFound = false
-        int j = i + 1
-        for (; j < ls.size() && ls[i] == ls[j]; j++) {
-            duplicateFound = true
-            subresult << ls[j]
-        }
-        if (duplicateFound) {
-            i = j - 1
-        }
-        result << subresult
-    }
-    result
-}
+import lists.p09
 
 List encode(List ls) {
-    def subres = pack(ls)
+    def subres = p09.packRecursive(ls)
     List result = []
     for (sls in subres) {
         if (sls.size() > 1)
