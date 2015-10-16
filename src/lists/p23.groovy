@@ -8,9 +8,7 @@ package lists
 static List randomSelect(Integer n, List ls) {
     Random random = new Random()
     List result = []
-    (1..n).each {
-        result += ls[random.nextInt(ls.size())]
-    }
+    (1..n).each { result += ls.remove(random.nextInt(ls.size())) }
     result
 }
 
