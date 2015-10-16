@@ -8,7 +8,7 @@ package lists
 import lists.p23
 
 List lotto(Integer count, Integer max) {
-    p23.randomSelect(count, 1..max)
+    p23.randomSelect(count, (1..max).toList())
 }
 
 assert lotto(5, 49).size() == 5
