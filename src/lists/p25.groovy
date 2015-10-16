@@ -4,7 +4,7 @@ package lists
 //      Hint: Use the solution of problem P23.
 //      Example:
 //      randomPermute([1, 2, 3, 4, 5])
-//      []
+//      [2, 5, 3, 4, 1]
 
 import lists.p23
 
