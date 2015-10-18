@@ -17,7 +17,7 @@ int gcdRecursive(int i, int j) {
     else return gcdRecursive(j, i % j)
 }
 
-int gcd(int i, int j) {
+static Integer gcd(Integer i, Integer j) {
     while (j != 0 )
         (i, j) = [j, i % j]
     return i
