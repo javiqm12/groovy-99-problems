@@ -6,7 +6,7 @@ package arithmetic
 //      primeFactors(315)
 //      [3, 3, 5, 7]
 
-List primeFactors(Integer n) {
+static List primeFactors(Long n) {
     def result = []
     if (n > 3) {
         def L = [2] + (3..Math.sqrt(n).intValue()).findAll { it % 2 != 0 }
