@@ -17,7 +17,7 @@ package arithmetic
 
 import arithmetic.p36
 
-Integer totient(Integer n) {
+static Long totient(Long n) {
     p36.primeFactorsMultiplicity(n).collect {p, m -> (p - 1) * p ** (m - 1)}.inject { p1, p2 -> p1 * p2 } as Integer
 }
 

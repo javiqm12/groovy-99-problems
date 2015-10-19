@@ -7,7 +7,7 @@ package arithmetic
 
 import  arithmetic.p32
 
-static Boolean areCoprimes(Integer a, Integer b) {
+static Boolean areCoprimes(Long a, Long b) {
     1 == p32.gcd(a, b)
 }
 

@@ -10,14 +10,14 @@ package arithmetic
 
 import  arithmetic.p33
 
-Integer totient(Integer n) {
+static Long totient(Long n) {
     if (n == 1) return 1
     (1..n).inject(0) { acum, m ->
         if (p33.areCoprimes(n, m))
             acum + 1
         else
             acum
-    } as Integer
+    } as Long
 }
 
 assert totient(10) == 4

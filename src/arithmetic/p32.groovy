@@ -12,12 +12,12 @@ import static Math.min
 
 import groovy.transform.TailRecursive
 @TailRecursive
-int gcdRecursive(int i, int j) {
+Long gcdRecursive(Long i, Long j) {
     if (j == 0) return i
     else return gcdRecursive(j, i % j)
 }
 
-static Integer gcd(Integer i, Integer j) {
+static Long gcd(Long i, Long j) {
     while (j != 0 )
         (i, j) = [j, i % j]
     return i
