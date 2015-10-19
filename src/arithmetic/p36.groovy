@@ -10,7 +10,7 @@ import lists.p09
 import arithmetic.p35
 
 static List primeFactorsMultiplicity(Long n) {
-    p09.packRecursive( p35.primeFactors(n) ).collect { [it[0], it.size()] }
+    p09.packTailRecursive( p35.primeFactors(n) ).collect { [it[0], it.size()] }
 }
 
 assert primeFactorsMultiplicity(315) == [[3, 2], [5, 1], [7, 1]]
