@@ -31,12 +31,16 @@ static List packRecursive(List ls) {
     [lsh] + packRecursive(ls.dropWhile { it == ls.head() })
 }
 
+import groovy.transform.TailRecursive
+@TailRecursive
+static List packTailRecursive(List ls, List pack = []) {
+    if (!ls) return pack
+    pack << ls.takeWhile { it == ls.head() }
+    packTailRecursive(ls.dropWhile { it == ls.head() }, pack)
+}
+
 List ls = [1, 1, 1, 1, 2, 3, 3, 1, 1, 4, 5, 5, 5, 5]
 
-//println "pack([1, 2, 2]) = " + pack([1, 2, 2])
-//println "pack([1, 1, 2]) = " + pack([1, 1, 2])
-//println "pack([1, 1, 2, 3, 3]) = " + pack([1, 1, 2, 3, 3])
-//println "pack([]) = " + pack([]) 
 assert pack([1, 2, 2]) == [[1], [2, 2]]
 assert pack([1, 1, 2]) == [[1, 1], [2]]
 assert pack([1, 1, 2, 3, 3]) == [[1, 1], [2], [3, 3]]
@@ -49,3 +53,9 @@ assert packRecursive([1, 2, 2]) == [[1], [2, 2]]
 assert packRecursive([1, 1, 2]) == [[1, 1], [2]]
 assert packRecursive([1, 1, 2, 3, 3]) == [[1, 1], [2], [3, 3]]
 assert packRecursive([]) == []
+
+assert packTailRecursive(ls) == [[1, 1, 1, 1], [2], [3, 3], [1, 1], [4], [5, 5, 5, 5]]
+assert packTailRecursive([1, 2, 2]) == [[1], [2, 2]]
+assert packTailRecursive([1, 1, 2]) == [[1, 1], [2]]
+assert packTailRecursive([1, 1, 2, 3, 3]) == [[1, 1], [2], [3, 3]]
+assert packTailRecursive([]) == []
