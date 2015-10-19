@@ -47,7 +47,6 @@ assert pack([1, 1, 2, 3, 3]) == [[1, 1], [2], [3, 3]]
 assert pack([]) == []
 assert pack(ls) == [[1, 1, 1, 1], [2], [3, 3], [1, 1], [4], [5, 5, 5, 5]]
 
-//println "packRecursive(ls) = ${packRecursive(ls)}"
 assert packRecursive(ls) == [[1, 1, 1, 1], [2], [3, 3], [1, 1], [4], [5, 5, 5, 5]]
 assert packRecursive([1, 2, 2]) == [[1], [2, 2]]
 assert packRecursive([1, 1, 2]) == [[1, 1], [2]]
