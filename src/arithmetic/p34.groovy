@@ -4,7 +4,7 @@ package arithmetic
 //      Euler's so-called totient function phi(m) is defined as the number of
 //      positive integers r (1 <= r < m) that are coprime to m.  As a special
 //      case, phi(1) is defined to be 1.
-//      Example:
+//  Example:
 //      totient(10)
 //      4
 
@@ -17,7 +17,7 @@ Integer totient(Integer n) {
             acum + 1
         else
             acum
-    }
+    } as Integer
 }
 
 assert totient(10) == 4
