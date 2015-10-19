@@ -3,8 +3,8 @@ package arithmetic
 //  P35 Determine the prime factors of a given positive integer.
 //      Construct a flat list containing the prime factors in ascending order.
 //      Example:
-//      totient(10)
-//      4
+//      primeFactors(315)
+//      [3, 3, 5, 7]
 
 List primeFactors(Integer n) {
     def result = []
