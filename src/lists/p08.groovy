@@ -41,6 +41,17 @@ List compressFunctional(List ls) {
     }
 }
 
+List compressCollect(List ls) {
+    def prev = null
+    ls.collect{item -> 
+        if (item!=prev) {
+            prev=item
+        } else {
+            null
+        }    
+    } - [null]
+}
+
 List ls = [1, 1, 1, 1, 2, 3, 3, 1, 1, 4, 5, 5, 5, 5]
 
 assert compress(ls) == [1, 2, 3, 1, 4, 5]
