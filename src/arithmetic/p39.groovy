@@ -5,7 +5,9 @@ package arithmetic
 //      primesInRenge(7, 31)
 //      [7, 11, 13, 17, 19, 23, 29, 31]
 
-def primesUpTo(bound) { 
+import arithmetic.p38
+
+static def primesUpTo(bound) { 
     def isPrime  = new BitSet(bound)
     isPrime[0..1] = false
     isPrime[2..bound] = true
@@ -29,5 +31,5 @@ def benchmark = { closure ->
     System.currentTimeMillis() - start
 }
 
-println "Duration primesUpTo(10000): ${benchmark { primesUpTo(10000) }} ms"
-println "Duration primesUpTo(100000): ${benchmark { primesUpTo(100000) }} ms"
+println "Duration primesUpTo(10000):  ${p38.benchmark { primesUpTo(10000) }} ms"
+println "Duration primesUpTo(100000): ${p38.benchmark { primesUpTo(100000) }} ms"
