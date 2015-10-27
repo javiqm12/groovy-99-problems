@@ -25,8 +25,8 @@ compareTotientImplementations(10090)
 compareTotientImplementations(10090)
 
 // Using a closure to mesure duration
-def benchmark = { closure ->
-    start = System.currentTimeMillis()
+static def benchmark(Closure closure) {
+    def start = System.currentTimeMillis()
     closure.call()
     System.currentTimeMillis() - start
 }
