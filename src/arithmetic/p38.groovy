@@ -22,3 +22,14 @@ def compareTotientImplementations(Integer n) {
 }
 
 compareTotientImplementations(10090)
+compareTotientImplementations(10090)
+
+// Using a closure to mesure duration
+def benchmark = { closure ->
+    start = System.currentTimeMillis()
+    closure.call()
+    System.currentTimeMillis() - start
+}
+
+println "Duration p34.totient(10090): ${benchmark { p34.totient(10090) }} ms"
+println "Duration p37.totient(10090): ${benchmark { p37.totient(10090) }} ms"
