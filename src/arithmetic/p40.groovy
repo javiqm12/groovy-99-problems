@@ -13,7 +13,7 @@ package arithmetic
 
 import arithmetic.p39
 
-def goldbach(n) {
+static List goldbach(n) {
     def pris = p39.primesUpTo(n)
     def a = pris.takeWhile { it < n } find { (n - it) in pris }
     [a, n - a]
