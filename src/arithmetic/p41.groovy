@@ -37,4 +37,15 @@ def goldbachList(lower, upper) {
     }
 }
 
+def goldbachListLimit(lower, upper, limit) {
+    if (lower & 1) lower += 1
+    if (lower < 4) lower = 4
+    for (n in (lower .. upper).step(2)) {
+        def gb = p40.goldbach(n)
+        if (gb[0] > limit) println "$n = ${gb[0]} + ${gb[1]}"
+    }
+}
+
 goldbachList(9, 20)
+println '\nPart 2:'
+goldbachListLimit(1, 2000, 50)
