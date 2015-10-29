@@ -12,6 +12,7 @@ package arithmetic
 //      18 = 5 + 13
 //      20 = 3 + 17
 //
+//  Part 2:
 //      In most cases, if an even number is written as the sum of two prime
 //      numbers, one of them is very small.  Very rarely, the primes are both
 //      bigger than, say, 50.  Try to find out how many such cases there are in
@@ -32,8 +33,8 @@ def goldbachList(lower, upper) {
     if (lower < 4) lower = 4
     for (n in (lower .. upper).step(2)) {
         def gb = p40.goldbach(n)
-        println "$n = $gb[0] + $gb[1]"
+        println "$n = ${gb[0]} + ${gb[1]}"
     }
 }
 
-goldbachList(1, 10)
+goldbachList(9, 20)
